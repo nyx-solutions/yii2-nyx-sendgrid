@@ -1,7 +1,15 @@
-# yii2-sendgrid
+Yii2 NYX SendGrid
+-----------------
+
 Yii2 Mailer extension for SendGrid with batch mailing support.
 
----
+[![Latest Stable Version](https://poser.pugx.org/nyx-solutions/yii2-nyx-sendgrid/v/stable)](https://packagist.org/packages/nyx-solutions/yii2-nyx-sendgrid)
+[![Total Downloads](https://poser.pugx.org/nyx-solutions/yii2-nyx-sendgrid/downloads)](https://packagist.org/packages/nyx-solutions/yii2-nyx-sendgrid)
+[![Latest Unstable Version](https://poser.pugx.org/nyx-solutions/yii2-nyx-sendgrid/v/unstable)](https://packagist.org/packages/nyx-solutions/yii2-nyx-sendgrid)
+[![License](https://poser.pugx.org/nyx-solutions/yii2-nyx-sendgrid/license)](https://packagist.org/packages/nyx-solutions/yii2-nyx-sendgrid)
+[![Monthly Downloads](https://poser.pugx.org/nyx-solutions/yii2-nyx-sendgrid/d/monthly)](https://packagist.org/packages/nyx-solutions/yii2-nyx-sendgrid)
+[![Daily Downloads](https://poser.pugx.org/nyx-solutions/yii2-nyx-sendgrid/d/daily)](https://packagist.org/packages/nyx-solutions/yii2-nyx-sendgrid)
+[![composer.lock](https://poser.pugx.org/nyx-solutions/yii2-nyx-sendgrid/composerlock)](https://packagist.org/packages/nyx-solutions/yii2-nyx-sendgrid)
 
 ## Installation
 
@@ -10,13 +18,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist wadeshuler/yii2-sendgrid
+php composer.phar require --prefer-dist nyx-solutions/yii2-nyx-sendgrid
 ```
 
 or add
 
 ```json
-"wadeshuler/yii2-sendgrid": "~1.0"
+"nyx-solutions/yii2-nyx-sendgrid": "~2.0.0"
 ```
 
 to the require section of your application's `composer.json` file.

@@ -2,15 +2,18 @@
 
     namespace nyx\mail\sendgrid;
 
+    use Exception;
     use Yii;
     use yii\base\InvalidConfigException;
     use yii\helpers\Json;
     use yii\mail\BaseMailer;
-    use nyx\mail\sendgrid\Message;
 
+    /**
+     * Mailer
+     */
     class Mailer extends BaseMailer
     {
-        const LOGNAME = 'SendGrid Mailer';
+        public const LOGNAME = 'SendGrid Mailer';
 
         /**
          * @var string the default class name of the new message instances created by [[createMessage()]]
@@ -57,7 +60,7 @@
          */
         public function getSendGrid()
         {
-            if ( ! is_object($this->_sendGrid) ) {
+            if (!is_object($this->_sendGrid)) {
                 $this->_sendGrid = $this->createSendGrid();
             }
 
@@ -73,10 +76,10 @@
         {
             $response = $this->getSendGrid()->client->mail()->batch()->post();
 
-            if ( $response->statusCode() === 201 ) {
-                if ( $decoded = json_decode($response->body()) ) {
+            if ($response->statusCode() === 201) {
+                if ($decoded = json_decode($response->body())) {
                     $batchId = $decoded->batch_id;
-                    if ( isset($batchId) && ! empty($batchId) && is_string($batchId) ) {
+                    if (!empty($batchId) && is_string($batchId)) {
                         return $batchId;
                     }
                 }
@@ -93,7 +96,7 @@
          */
         public function createSendGrid()
         {
-            if ( ! $this->apiKey ) {
+            if (!$this->apiKey) {
                 throw new InvalidConfigException("SendGrid API Key is required!");
             }
 
@@ -132,6 +135,11 @@
             $this->_errors[] = $error;
         }
 
+        /**
+         * @param $response
+         *
+         * @return string
+         */
         public function parseErrorCode($response)
         {
             $code = $response->statusCode();
@@ -164,22 +172,24 @@
             try {
                 $payload = $message->buildMessage();
 
-                if ( ! $payload ) {
-                    throw new \Exception('Error building message. Unable to send!');
+                if (!$payload) {
+                    throw new Exception('Error building message. Unable to send!');
                 }
 
                 $response = $this->getSendGrid()->client->mail()->send()->post($payload);
 
-                $formatResponse = ['code' => $response->statusCode(), 'headers' => $response->headers(), 'body' => $response->body()];
+                $formatResponse = [
+                    'code' => $response->statusCode(), 'headers' => $response->headers(), 'body' => $response->body(),
+                ];
                 $this->addRawResponse($formatResponse);
 
-                if ( ($response->statusCode() !== 202) && ($response->statusCode() !== 200) ) {
-                    throw new \Exception( $this->parseErrorCode($response) );
+                if (($response->statusCode() !== 202) && ($response->statusCode() !== 200)) {
+                    throw new Exception($this->parseErrorCode($response));
                 }
 
                 return true;
 
-            } catch ( \Exception $e ) {
+            } catch (Exception $e) {
 
                 Yii::error($e->getMessage(), self::LOGNAME);
                 $this->addError($e->getMessage());

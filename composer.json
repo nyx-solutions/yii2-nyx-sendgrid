@@ -1,56 +1,66 @@
 {
-    "name": "nyx-solutions/yii2-nyx-sendgrid",
-    "description": "Yii2 Mailer extension for SendGrid with batch mailing support.",
-    "keywords": ["yii2", "sendgrid", "yii2 mailer", "yii2 sendgrid", "yii2 sendgrid mailer"],
-    "homepage": "https://github.com/nyx-solutions/yii2-nyx-sendgrid",
-    "type": "yii2-extension",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Wade Shuler",
-            "email": "wadeshuler@users.noreply.github.com"
-        },
-        {
-            "name": "NYX Solutions",
-            "email": "nyx@jsas.com.br"
-          },
-          {
-            "name": "Jonatas Sas",
-            "email": "atendimento@jsas.com.br"
-          },
-          {
-            "name": "Breno Herculano",
-            "email": "brenosouherculano@gmail.com"
-          }
-    ],
-    "support": {
-        "issues": "https://github.com/nyx-solutions/yii2-nyx-sendgrid/issues?state=open",
-        "source": "https://github.com/nyx-solutions/yii2-nyx-sendgrid"
+  "name": "nyx-solutions/yii2-nyx-sendgrid",
+  "description": "Yii2 Mailer extension for SendGrid with batch mailing support.",
+  "keywords": [
+    "yii2",
+    "sendgrid",
+    "yii2 mailer",
+    "yii2 sendgrid",
+    "yii2 sendgrid mailer"
+  ],
+  "homepage": "https://github.com/nyx-solutions/yii2-nyx-sendgrid",
+  "type": "yii2-extension",
+  "license": "MIT",
+  "version": "2.0.0",
+  "authors": [
+    {
+      "name": "Wade Shuler",
+      "email": "wadeshuler@users.noreply.github.com"
     },
-    "minimum-stability": "stable",
-    "require": {
-        "php": ">=8.1.0 <8.2",
+    {
+      "name": "NYX Solutions",
+      "email": "nyx@jsas.com.br"
+    },
+    {
+      "name": "Jonatas Sas",
+      "email": "atendimento@jsas.com.br"
+    },
+    {
+      "name": "Breno Herculano",
+      "email": "brenosouherculano@gmail.com"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/nyx-solutions/yii2-nyx-sendgrid/issues?state=open",
+    "source": "https://github.com/nyx-solutions/yii2-nyx-sendgrid"
+  },
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=8.1.0 <8.2",
 
-        "nyx-solutions/yii2-nyx": "~5.0.0",
+    "nyx-solutions/yii2-nyx": "~5.0.0",
 
-        "sendgrid/sendgrid": "~5.4"
+    "sendgrid/sendgrid": "~8.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "nyx\\mail\\sendgrid\\": "mail"
+    }
+  },
+  "config": {
+    "process-timeout": 1800,
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true
+    }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
     },
-    "autoload": {
-        "psr-4": {
-            "nyx\\mail\\sendgrid\\": "mail"
-        }
-    },
-    "config": {
-      "process-timeout": 1800
-    },
-    "repositories": [
-      {
-        "type": "composer",
-        "url": "https://asset-packagist.org"
-      },
-      {
-        "type": "vcs",
-        "url": "https://github.com/nyx-solutions/yii2-nyx-sendgrid"
-      }
-    ]
+    {
+      "type": "vcs",
+      "url": "https://github.com/nyx-solutions/yii2-nyx-sendgrid"
+    }
+  ]
 }
